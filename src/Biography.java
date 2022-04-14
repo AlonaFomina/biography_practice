@@ -38,6 +38,7 @@ public class Biography {
         //YOUR CODE HERE
 
         Scanner userInput = new Scanner(System.in);
+        String bookInfo;
 
         System.out.println("What is your favorite author’s first name?");
         String name = userInput.next();
@@ -64,9 +65,9 @@ public class Biography {
 
         do {
             System.out.println("Would you like enter book information? (Y/N)");
-            String bookInfo = userInput.next();
+            bookInfo = userInput.next();
 
-            if (bookInfo.toLowerCase().startsWith("n"))continue;
+            if (bookInfo.toLowerCase().startsWith("n"))break;
 
             System.out.println("What is the book name?");
             String bName = userInput.next();
@@ -79,9 +80,9 @@ public class Biography {
 
             Book book = new Book(bName, genre, pages);
             books.add(book);
-        } while (books.size() < 3);
+        } while (bookInfo.toLowerCase().startsWith("y"));
 
-            Author author = new Author(name, lastName, country, isAlive, age, books);
+        Author author = new Author(name, lastName, country, isAlive, age, books);
 
         System.out.println("Author's information = " + author);
         System.out.println("Author's books are as listed below:");
@@ -90,6 +91,5 @@ public class Biography {
             System.out.println(book);
 
         }
-        }
     }
-
+}
